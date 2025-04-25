@@ -6,7 +6,6 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -39,13 +38,13 @@ export const Login = () => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Nome
+                Email
               </label>
               <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
                 placeholder="Digite seu nome"
                 required
