@@ -9,11 +9,56 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "success" | "error" | null;
+  }>({ message: "", type: null });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement form submission logic here
-    console.log("Form submitted:", formData);
+
+    try {
+      // Enviar dados ao backend com fetch
+      const response = await fetch("http://localhost:8080/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      // Verificar se a resposta é bem-sucedida
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Email ou senha inválidos");
+      }
+
+      // Sucesso: processar a resposta
+      const data = await response.json();
+      console.log("Resposta do backend:", data);
+      setNotification({
+        message: "Login realizado com sucesso!",
+        type: "success",
+      });
+
+      // Armazenar token, se retornado (ex.: JWT)
+      if (data.token) {
+        localStorage.setItem("token", data.token); // Armazena o token
+      }
+
+      // Redirecionar após 2 segundos
+      setTimeout(() => navigate("/dashboard"), 2000); // Ajuste a rota conforme necessário
+    } catch (err: any) {
+      // Tratar erros
+      setNotification({
+        message: err.message || "Erro ao fazer login",
+        type: "error",
+      });
+      console.error("Erro:", err);
+    }
   };
 
   const handleChange = (
@@ -23,6 +68,7 @@ export const Login = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    setNotification({ message: "", type: null }); // Limpar notificação
   };
 
   return (

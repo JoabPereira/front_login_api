@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.tsx";
 import { Signup } from "./components/Signup";
 import { Login } from "./components/Login";
+import { Dashboard } from "./components/dashboard.tsx";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/"
           element={<h1>Bem-vindo! Escolha uma opção acima.</h1>}
