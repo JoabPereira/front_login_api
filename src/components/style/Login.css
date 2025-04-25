@@ -1,0 +1,82 @@
+section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 5rem 1rem;
+  margin-top: -100px;
+  margin-left: -15px;
+}
+
+.container {
+  max-width: 28rem; /* Equivalente a max-w-md */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+h2 {
+  font-size: 30px; /* Equivalente a text-3xl */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-family: "Inter", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Equivalente a space-y-6 */
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #282d36; /* Equivalente a text-gray-700 */
+  margin-bottom: 0.25rem;
+  font-family: "Inter", sans-serif;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db; /* Equivalente a border-gray-300 */
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: transparent;
+  ring: 2px solid #3b82f6; /* Equivalente a focus:ring-blue-500 */
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"] {
+  background-color: #31363f; /* Equivalente a bg-blue-500 */
+}
+
+button[type="submit"]:hover {
+  background-color: #2563eb; /* Equivalente a hover:bg-blue-600 */
+}
+
+button[type="button"] {
+  background-color: #6b7280; /* Equivalente a bg-gray-500 */
+}
+
+button[type="button"]:hover {
+  background-color: #4b5563; /* Equivalente a hover:bg-gray-600 */
+}
